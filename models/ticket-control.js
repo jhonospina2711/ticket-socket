@@ -40,6 +40,18 @@ class TicketControl {
         
     }
 
+    reiniciar(reinicio){
+
+        //const {hoy,tickets,ultimo,ultimos4} = require('../db/data.json');
+        const {hoy,tickets,ultimo,ultimos4} = reinicio;
+        this.hoy        = hoy;
+        this.tickets    = tickets;
+        this.ultimo     = ultimo;
+        this.ultimos4   = ultimos4
+        this.guardarDB();
+        return this.hoy;
+    }
+
     guardarDB(){
         const dbPath = path.join(__dirname, '../db/data.json');
         fs.writeFileSync(dbPath, JSON.stringify(this.toJson));

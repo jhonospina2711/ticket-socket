@@ -9,6 +9,11 @@ const socketController = (socket) => {
     socket.emit('estado-actual', ticketControl.ultimos4);
     socket.emit('tickets-pendientes', ticketControl.tickets.length);
 
+    socket.on('iniciar-control', (payload, callback) => {
+        const iniciar = ticketControl.reiniciar(payload); 
+        console.log(iniciar);
+        //callback(iniciar);
+    })
 
     socket.on('siguiente-ticket', ( payload, callback ) => {
         
